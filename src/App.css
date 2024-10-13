@@ -1,0 +1,23 @@
+.sidebar-icon {
+  font-size: 28px; /* Adjust the icon size if needed */
+  background: linear-gradient(122.33deg, #FF5353 30.62%, #E91E1E 100%);
+  -webkit-text-fill-color: transparent;
+}
+
+.sidebar-icon:hover {
+  background: linear-gradient(122.33deg, #FF5353 30.62%, #E91E1E 100%);
+  -webkit-text-fill-color: transparent;
+  filter: brightness(1.2); /* Optional hover effect to make the icon pop */
+}
+.hide-scrollbar {
+  overflow-y: scroll; /* Enable vertical scrolling */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* Hide scrollbar for Internet Explorer and Edge */
+  scrollbar-width: none;  /* Hide scrollbar for Firefox */
+}
