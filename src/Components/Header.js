@@ -1,19 +1,20 @@
 import SearchIcon from "@mui/icons-material/Search";
 import { TextField, InputAdornment } from "@mui/material";
 
-const Header = () => {
+const Header = ({ setSearchQuery }) => {
   return (
-    <div className="bg-[#490000] p-4 text-white justify-center flex space-x-20 align-middle items-center">
-      <div className="flex space-x-20 justify-center">
+    <div className="bg-[#490000] p-4 text-white flex flex-col md:flex-row md:justify-center md:space-x-8 lg:space-x-20 items-center space-y-4 md:space-y-0">
+      <div className="flex space-x-4 md:space-x-8 lg:space-x-20 justify-center">
         <span>Music</span>
         <span>Podcast</span>
         <span>Live</span>
         <span>Radio</span>
       </div>
-      <div className="">
+      <div className="w-full md:w-auto">
         <TextField
           variant="outlined"
           placeholder="Search"
+          onChange={(e) => setSearchQuery(e.target.value)}
           InputProps={{
             endAdornment: (
               <InputAdornment position="start">
@@ -26,7 +27,7 @@ const Header = () => {
             backgroundColor: "#2C0000",
             color: "white",
             borderRadius: "50px",
-            width: "400px",
+            width: { xs: "100%", md: "300px", lg: "400px" },
             "& .MuiOutlinedInput-root": {
               "& fieldset": {
                 borderColor: "#2C0000",

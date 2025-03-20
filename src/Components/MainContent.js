@@ -24,24 +24,24 @@ const MainContent = ({ songs, currentSong, setCurrentSong, isPlaying, setIsPlayi
   };
 
   return (
-    <div className="flex-1 bg-gradient-to-b p-8 text-white from-[#490000] to-black">
-      <div className="flex justify-center mb-8 mt-40 relative">
+    <div className="flex-1 bg-gradient-to-b p-4 md:p-8 text-white from-[#490000] to-black">
+      <div className="flex justify-center mb-6 md:mb-8 mt-16 md:mt-40 relative px-2 md:px-8">
         <img
           src="/Background.png"
           alt="Michael Jackson"
-          className="h-56 rounded-3xl w-[900px] object-cover"
+          className="h-32 md:h-56 rounded-3xl w-full md:w-[900px] object-cover"
         />
-        <div className="bg-black rounded-3xl absolute inset-0 left-10 opacity-50"></div>
-        <div className="-translate-y-1/2 absolute left-32 top-1/2 transform">
-          <h1 className="text-4xl font-bold">Michael Jackson</h1>
-          <p className="text-lg">27,852,501 monthly listeners</p>
+        <div className="bg-black rounded-3xl absolute inset-0 opacity-50"></div>
+        <div className="absolute left-3 md:left-32 top-1/2 transform -translate-y-1/2">
+          <h1 className="text-xl md:text-4xl font-bold">Michael Jackson</h1>
+          <p className="text-xs md:text-lg">27,852,501 monthly listeners</p>
         </div>
 
-        <div className="-translate-y-1/2 absolute right-16 top-5 transform">
+        <div className="hidden md:block absolute -translate-y-1/2 right-16 top-5 transform">
           <img
+            className="h-96 rounded-lg object-cover"
             src="/Michael.png"
             alt="Another Image"
-            className="h-96 rounded-lg object-cover"
           />
         </div>
       </div>
@@ -56,7 +56,11 @@ const MainContent = ({ songs, currentSong, setCurrentSong, isPlaying, setIsPlayi
               className="space-y-4"
             >
               {songList.map((song, index) => (
-                <Draggable key={song.id} draggableId={String(song.id)} index={index}>
+                <Draggable
+                  key={song.id}
+                  draggableId={String(song.id)}
+                  index={index}
+                >
                   {(provided, snapshot) => (
                     <div
                       ref={provided.innerRef}
@@ -75,7 +79,9 @@ const MainContent = ({ songs, currentSong, setCurrentSong, isPlaying, setIsPlayi
                     >
                       {/* Move Icon */}
                       {currentSong.id === song.id && isPlaying ? (
-                        <AudiotrackIcon sx={{color:'#f94646', fontSize: '42px'}}/>
+                        <AudiotrackIcon
+                          sx={{ color: "#f94646", fontSize: "42px" }}
+                        />
                       ) : (
                         <span>{index + 1}</span>
                       )}

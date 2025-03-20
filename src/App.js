@@ -62,6 +62,25 @@ function App() {
   const [songList, setSongList] = useState(songsData);
   const [currentSong, setCurrentSong] = useState(songsData[0]);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const filteredSongs = songList
+    .filter(song => song.title.toLowerCase().includes(searchQuery.toLowerCase()))
+    .sort((a, b) => {
+      const aTitle = a.title.toLowerCase();
+      const bTitle = b.title.toLowerCase();
+      const query = searchQuery.toLowerCase();
+      
+      // Exact match gets highest priority
+      if (aTitle === query && bTitle !== query) return -1;
+      if (bTitle === query && aTitle !== query) return 1;
+      
+      // Starts with gets second priority
+      if (aTitle.startsWith(query) && !bTitle.startsWith(query)) return -1;
+      if (bTitle.startsWith(query) && !aTitle.startsWith(query)) return 1;
+      
+      return 0;
+    });
 
   // Update song list after drag-and-drop reordering
   const updateSongList = (newSongList) => {
@@ -75,34 +94,32 @@ function App() {
   };
 
   return (
-    <div className="flex h-screen">
+    <div className="flex flex-col md:flex-row h-screen overflow-hidden">
       <Sidebar />
-      <div className="flex">
-        <div className="bg-gradient-to-b w-full from-[#490000] hide-scrollbar overflow-y-auto to-black">
-          <Header  className="fixed"/>
+      <div className="flex flex-col md:flex-row flex-1 overflow-hidden">
+        <div className="bg-gradient-to-b w-full md:w-2/3 from-[#490000] hide-scrollbar overflow-y-auto to-black min-h-[60vh] md:min-h-0">
+          <Header setSearchQuery={setSearchQuery} />
           <MainContent
-        songs={songList}
-        currentSong={currentSong}
-        setCurrentSong={setCurrentSong}
-        isPlaying={isPlaying}
-        setIsPlaying={setIsPlaying}
-        updateSongList={updateSongList}  // Pass down the state update function
-      />
+            songs={filteredSongs}
+            currentSong={currentSong}
+            setCurrentSong={setCurrentSong}
+            isPlaying={isPlaying}
+            setIsPlaying={setIsPlaying}
+            updateSongList={updateSongList}
+          />
         </div>
-        <div className="flex flex-col bg-[#230a0a] h-screen w-1/3"> {/* Set parent to flex container with full height */}
-  {/* Other content can go here */}
-  
-  <div className="bg-[#230a0a] p-4 mt-auto"> {/* Use mt-auto to push this div to the bottom */}
-  <NowPlaying
-        currentSong={currentSong}
-        isPlaying={isPlaying}
-        songList={songList}
-        setIsPlaying={setIsPlaying}
-        setCurrentSong={setCurrentSong}
-        onSongEnd={handleSongEnd}
-      />
-  </div>
-</div>
+        <div className="flex flex-col bg-[#230a0a] h-[40vh] md:h-screen w-full md:w-1/3 sticky bottom-0 md:relative">
+          <div className="bg-[#230a0a] p-2 md:p-4 mt-auto">
+            <NowPlaying
+              currentSong={currentSong}
+              isPlaying={isPlaying}
+              songList={songList}
+              setIsPlaying={setIsPlaying}
+              setCurrentSong={setCurrentSong}
+              onSongEnd={handleSongEnd}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

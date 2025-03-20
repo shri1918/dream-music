@@ -50,13 +50,13 @@ const NowPlaying = ({ currentSong, isPlaying,songList, setIsPlaying, onSongEnd,s
   };
 
   return (
-    <div className="p-4 bg-red-800 text-white rounded-lg">
-      <h2 className="text-lg mb-2 text-center">Now Playing</h2>
-      <img src={currentSong.imageUrl} alt={currentSong.title} className="w-96 rounded-lg mb-2" />
-      <h3 className="text-xl font-bold text-center">{currentSong.title}</h3>
-      <p className="text-sm text-center">{currentSong.album}</p>
-      <div className="flex items-center justify-between mt-4">
-        <span>{formatTime(currentTime)}</span>
+    <div className="p-2 md:p-4 bg-red-800 text-white rounded-lg">
+      <h2 className="text-base md:text-lg mb-2 text-center">Now Playing</h2>
+      <img src={currentSong.imageUrl} alt={currentSong.title} className="w-full md:w-96 rounded-lg mb-2" />
+      <h3 className="text-lg md:text-xl font-bold text-center">{currentSong.title}</h3>
+      <p className="text-xs md:text-sm text-center">{currentSong.album}</p>
+      <div className="flex items-center justify-between mt-3 md:mt-4">
+        <span className="text-sm md:text-base">{formatTime(currentTime)}</span>
         <input
           type="range"
           min="0"
@@ -65,21 +65,21 @@ const NowPlaying = ({ currentSong, isPlaying,songList, setIsPlaying, onSongEnd,s
           onChange={(e) => setCurrentTime(e.target.value)}
           className="w-full mx-2"
         />
-        <span>{formatTime(duration)}</span>
+        <span className="text-sm md:text-base">{formatTime(duration)}</span>
       </div>
-      <div className="flex justify-between mt-4">
-        <button onClick={handlePrev} >
-          <FaStepBackward className="text-white" />
+      <div className="flex justify-between mt-3 md:mt-4">
+        <button onClick={handlePrev} className="p-2 hover:bg-red-700 rounded-full">
+          <FaStepBackward className="text-white text-lg md:text-xl" />
         </button>
-        <button onClick={handlePlayPause}>
+        <button onClick={handlePlayPause} className="p-2 hover:bg-red-700 rounded-full">
           {isPlaying ? (
-            <FaPause className="text-white" />
+            <FaPause className="text-white text-lg md:text-xl" />
           ) : (
-            <FaPlay className="text-white" />
+            <FaPlay className="text-white text-lg md:text-xl" />
           )}
         </button>
-        <button onClick={handleSkip} >
-          <FaStepForward className="text-white" />
+        <button onClick={handleSkip} className="p-2 hover:bg-red-700 rounded-full">
+          <FaStepForward className="text-white text-lg md:text-xl" />
         </button>
       </div>
       <audio
