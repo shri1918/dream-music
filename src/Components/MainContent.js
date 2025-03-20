@@ -24,24 +24,24 @@ const MainContent = ({ songs, currentSong, setCurrentSong, isPlaying, setIsPlayi
   };
 
   return (
-    <div className="p-8 text-white flex-1 bg-gradient-to-b from-[#490000] to-black">
-      <div className="relative mb-8 flex justify-center mt-40">
+    <div className="flex-1 bg-gradient-to-b p-8 text-white from-[#490000] to-black">
+      <div className="flex justify-center mb-8 mt-40 relative">
         <img
-          src="https://s3-alpha-sig.figma.com/img/27d6/181f/b614afab3396f4c60bfa19b926b4b71d?Expires=1729468800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=RBfCmQwtAkwm56MnBnwpU7PbZhUUHBNzijW-Y9jINNOVK4~j8idG4sNxTgH8KybxV~xVRQCd108Q9sQphfeQ3yxZCKYBxmGAuyo4fCEfY8F86hMrwskXaPMKxWDVA4ghFUK7Ynw3ODONjrncGYwxEmv~fwBr0tWvrUorYmdw~~ecxnXafnphBB2YOC~qOjoSUCKFocpHrRC9gc1DY3cEFHgHAOUM5Ny7otMMlHhaINqfwiGSihxpUqDXDdEI51mOzwQOaeJTv3OIPcMTfgzkwM5UeS9HuAKY7Qs8~n0IC6SsuD0BGopa7o-n2PUlWtoEOSpjzBT528hU-V2mRHmkPg__"
+          src="/Background.png"
           alt="Michael Jackson"
-          className="w-[900px] h-56 object-cover rounded-3xl"
+          className="h-56 rounded-3xl w-[900px] object-cover"
         />
-        <div className="absolute left-10 inset-0 bg-black opacity-50 rounded-3xl"></div>
-        <div className="absolute top-1/2 left-32 transform -translate-y-1/2">
+        <div className="bg-black rounded-3xl absolute inset-0 left-10 opacity-50"></div>
+        <div className="-translate-y-1/2 absolute left-32 top-1/2 transform">
           <h1 className="text-4xl font-bold">Michael Jackson</h1>
           <p className="text-lg">27,852,501 monthly listeners</p>
         </div>
 
-        <div className="absolute top-5 right-16 transform -translate-y-1/2">
+        <div className="-translate-y-1/2 absolute right-16 top-5 transform">
           <img
-            src="https://s3-alpha-sig.figma.com/img/228e/160e/5d55e4ce985c98f27a2e4560589055d1?Expires=1729468800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=W8aKtSNaNDTaLGbE2G2rBahP8yaHhK-VdqmgH1A5upxolZRVNlEG5JglV8rfCvEBxinRnw5K-tHc5cZuPE~-QuivVaqgwnguLiiD7HSXG4uH563R1tHDtteVcj0dP1U3aNr2bq~TbLI4n0aCXrv5q-7WS9Q9nn-JfmL5q-sassNtGTT-Cyx~gpUioN7ZrADTsi1DlPfR8i5ur97YEDpfN0sx7r9wK~z7wtvgKU82oEZj7S8WiKj61LCmL2ctxDc7FUOhjsb7UYPGYDHHdlERzeDA3MIyLOmYHMl~nmjzVBsOV0-UFcqy8CCky9yJI00gDCldpgIse1NEr2kbbR1CmQ__"
+            src="/Michael.png"
             alt="Another Image"
-            className="h-96 object-cover rounded-lg"
+            className="h-96 rounded-lg object-cover"
           />
         </div>
       </div>
@@ -79,11 +79,11 @@ const MainContent = ({ songs, currentSong, setCurrentSong, isPlaying, setIsPlayi
                       ) : (
                         <span>{index + 1}</span>
                       )}
-                      <div className="flex space-x-4 items-center w-96">
+                      <div className="flex w-96 items-center space-x-4">
                         <img
                           src={song.imageUrl}
                           alt={song.title}
-                          className="w-12 h-12 rounded-md"
+                          className="h-12 rounded-md w-12"
                         />
                         <span className="text-left">{song.title} </span>
                       </div>
